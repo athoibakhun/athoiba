@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Computer Training Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+        }
+        
+        /* Courses Section */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-duration, .course-fee {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            color: #666;
+        }
+        
+        .course-duration i, .course-fee i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+        
+        /* Affiliation Section */
+        .affiliation {
+            background: var(--light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 250px;
+        }
+        
+        .badge i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 3rem 0;
+            background: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-laptop-code logo-icon"></i>
+                <h1>Max Computer Training Center</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#affiliation">Affiliation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#register" class="btn">Register Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Advance Your Career with Professional Computer Training</h2>
+            <p>Get certified in various computer courses and enhance your skills with our industry-expert trainers</p>
+            <a href="#register" class="btn">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="container" id="courses">
+        <h2 class="section-title">Our Courses</h2>
+        <div class="courses">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="course-content">
+                    <h3>CCC (Course on Computer Concepts)</h3>
+                    <div class="course-duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>3 Months</span>
+                    </div>
+                    <div class="course-fee">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Rs. 5,000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="course-content">
+                    <h3>DCA (Diploma in Computer Applications)</h3>
+                    <div class="course-duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>3 Months</span>
+                    </div>
+                    <div class="course-fee">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Rs. 5,000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="course-content">
+                    <h3>ADCA (Advanced Diploma in Computer Applications)</h3>
+                    <div class="course-duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>3 Months</span>
+                    </div>
+                    <div class="course-fee">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Rs. 5,000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course 4 -->
+            <div class="course-card">
+                <div class="course-content">
+                    <h3>PGDCA (Post Graduate Diploma in Computer Applications)</h3>
+                    <div class="course-duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>3 Months</span>
+                    </div>
+                    <div class="course-fee">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Rs. 5,000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course 5 -->
+            <div class="course-card">
+                <div class="course-content">
+                    <h3>C Programming</h3>
+                    <div class="course-duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>3 Months</span>
+                    </div>
+                    <div class="course-fee">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Rs. 5,000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course 6 -->
+            <div class="course-card">
+                <div class="course-content">
+                    <h3>Tally</h3>
+                    <div class="course-duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>3 Months</span>
+                    </div>
+                    <div class="course-fee">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Rs. 5,000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course 7 -->
+            <div class="course-card">
+                <div class="course-content">
+                    <h3>Web Designing</h3>
+                    <div class="course-duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>3 Months</span>
+                    </div>
+                    <div class="course-fee">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Rs. 5,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliation Section -->
+    <section class="affiliation" id="affiliation">
+        <div class="container">
+            <h2 class="section-title">Our Affiliations</h2>
+            <p>We are proud to be affiliated with recognized organizations</p>
+            <div class="badges">
+                <div class="badge">
+                    <i class="fas fa-award"></i>
+                    <h3>AICSM Affiliated</h3>
+                    <p>Recognized by the Government of India</p>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Sarva Education</h3>
+                    <p>Recognized by the Government of India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>mctcthoubal@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>8787760746</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Thoubal, Manipur</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Registration Form</h3>
+                    <p>Register for our courses by filling out the form below:</p>
+                    <a href="https://forms.gle/TMWMdMS591UWBPM58" class="btn">Register Now</a>
+                    <div style="margin-top: 20px;">
+                        <h4>UPI Payment Option Available</h4>
+                        <p>Scan the code below to make payment via UPI:</p>
+                        <div style="background: #a09494; padding: 15px; display: inline-block; border-radius: 8px; margin-top: 10px;">
+                            <p style="text-align: center; font-weight: bold;">UPI QR Code</p>
+                            <div style="width: 150px; height: 150px; background: #ddd5d5; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                <p>
+                                <img src="qr_code.jpeg" width="150" height="150">
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2023 Max Computer Training Center. All rights reserved.</p>
+            <p>Affiliated to AICSM and Sarva Education recognized by Govt. of India</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerBtn = document.querySelector('a[href="#register"]');
+            registerBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId !== '#register') {
+                        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
